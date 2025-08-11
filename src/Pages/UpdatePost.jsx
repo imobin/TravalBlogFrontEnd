@@ -1,10 +1,12 @@
 import axios from "axios";
 import React from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 export default function CreatePost() {
+  const { id } = useParams();
+
   const navigate = useNavigate(); 
-  function postSubmitHandler(e) {
+  function postUpdateHandler(e) {
     e.preventDefault();
     const postInfo = {
       author: e.target.elements.author.value,
@@ -13,10 +15,10 @@ export default function CreatePost() {
     };
     console.log(postInfo);
     axios
-      .post(`http://localhost:3333/post/`, postInfo)
+      .put(`http://localhost:3333/post/${id}`, postInfo)
       .then((i) => {
         console.log(i.data);
-        alert("Post created")
+        alert("Post updated!")
         navigate("/")
       })
       .catch((err) => {
@@ -25,7 +27,7 @@ export default function CreatePost() {
   }
   return (
     <div>
-      <form onSubmit={postSubmitHandler}>
+      <form onSubmit={postUpdateHandler}>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
           <legend className="fieldset-legend">Creat a New post</legend>
 
