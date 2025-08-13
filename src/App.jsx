@@ -8,35 +8,20 @@ import Footer from './Components/Footer'
 import UpdatePost from './Pages/UpdatePost'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useAppContext } from './Context/appContext'
+
 function App() {
-  const [postList, setpostList] = useState([]) 
-  const [selectedPost, setselectedPost] = useState(
-        {id: "",
-        author: "",
-        title: "",
-        content: "",
-        cover: "",
-        date: ""})
-  useEffect(() => {
-    axios
-      .get("http://localhost:3333/post/")
-      .then((i) => {
-        setpostList(i.data)
-        // console.log(postList);
-      })
-      .catch((i) => {
-      console.log(i)
-      });
-  }, []);
-  console.log(postList);
+  const {selectedPost,  setselectedPost} = useAppContext()
+  // console.log(postList);
+  
   return (
     <div>
       <Header/>
       <Routes>
-        <Route path='/' element={<Home postList={postList}/>}/>
+        <Route path='/' element={<Home />}/>
         <Route path='/CreatePost' element={<CreatePost />}/>
-        <Route path='/PostDetails/:id' element = {<PostDetails setselectedPost={setselectedPost} selectedPost={selectedPost}/>}/>
-        <Route path='/UpdatePost/:id' element = {<UpdatePost setselectedPost={setselectedPost} selectedPost={selectedPost}/>}/>
+        <Route path='/PostDetails/:id' element = {<PostDetails />}/>
+        <Route path='/UpdatePost/:id' element = {<UpdatePost />}/>
       </Routes>
       <Footer/>
     </div>
