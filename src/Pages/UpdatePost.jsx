@@ -1,10 +1,11 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate, useParams } from "react-router";
+import { useAppContext } from "../Context/appContext";
 
 export default function CreatePost() {
   const { id } = useParams();
-
+  const {selectedPost,  setselectedPost} = useAppContext()
   const navigate = useNavigate(); 
   function postUpdateHandler(e) {
     e.preventDefault();
@@ -29,7 +30,7 @@ export default function CreatePost() {
     <div>
       <form onSubmit={postUpdateHandler}>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-          <legend className="fieldset-legend">Creat a New post</legend>
+          <legend className="fieldset-legend">Updating the post {id}</legend>
 
           <label className="label">Author</label>
           <input
@@ -37,6 +38,7 @@ export default function CreatePost() {
             className="input"
             placeholder="Author"
             name="author"
+            defaultValue={selectedPost.author}
           />
 
           <label className="label">Title</label>
@@ -45,6 +47,7 @@ export default function CreatePost() {
             className="input"
             placeholder="Title"
             name="title"
+            defaultValue={selectedPost.title}
           />
 
           <label className="label">Content</label>
@@ -53,6 +56,7 @@ export default function CreatePost() {
             className="input"
             placeholder="Content"
             name="content"
+            defaultValue={selectedPost.content}
           />
 
           <button className="btn btn-neutral mt-4">Submit</button>

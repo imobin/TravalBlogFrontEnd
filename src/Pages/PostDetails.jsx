@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
+import { useAppContext } from "../Context/appContext";
 
-export default function PostDetails({setselectedPost, selectedPost}) {
+export default function PostDetails() {
   const { id } = useParams();
   const navigate = useNavigate(); 
+  const {selectedPost,  setselectedPost} = useAppContext()
   useEffect(() => {
     axios
       .get(`http://localhost:3333/post/${id}`)
@@ -50,7 +52,7 @@ export default function PostDetails({setselectedPost, selectedPost}) {
   }
 
   
-  console.log(selectedPost.title)
+  // console.log(selectedPost.title)
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">

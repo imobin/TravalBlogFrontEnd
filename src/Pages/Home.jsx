@@ -1,7 +1,9 @@
 import React from 'react'
 import PostCard from '../Components/PostCard'
+import { useAppContext } from '../Context/appContext'
 
-export default function Home({postList}) {
+export default function Home() {
+  const {postList} = useAppContext()
   // {postList.map((i, k) => {
   //   <PostCard postList={i} index = k/>
   // })}
