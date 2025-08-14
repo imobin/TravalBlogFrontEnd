@@ -1,12 +1,78 @@
-# React + Vite
+# TravelBolg – Frontend (React + React Router + Context API + Tailwind CSS + daisyUI)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive frontend for the TravelBolg project, allowing users to browse, create, update, and delete travel-related posts.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- **Homepage:** Displays a list of all available posts.
+- **Create Post Page:** Form for adding a new post.
+- **Post Details Page:** View a single post’s details with options to **update** or **delete** it.
+- **Post Update Page:** Form for editing an existing post.
+- Global state management using **React Context API**.
+- Styled with **Tailwind CSS** and **daisyUI** for a modern, responsive UI.
+- Routing handled by **React Router**.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧰 Tech Stack
+
+- **Framework:** React
+- **Routing:** React Router
+- **State Management:** Context API
+- **Styling:** Tailwind CSS + daisyUI
+- **API Integration:** Fetch calls to the TravelBolg backend
+
+---
+
+## 📦 Getting Started (Local)
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- Backend API running locally or hosted (see [TravelBolg Backend](../backend) for setup)
+
+### Clone & Install
+
+```bash
+git clone <your-repo-url>
+cd TravelBolg-frontend
+npm install
+```
+
+---
+
+## 🧭 Pages Overview
+
+### 🏠 Homepage (/)
+
+Fetches and displays all posts.
+
+Each post links to its details page.
+
+### ➕ Create Post Page (/create)
+
+Form with fields: author, title, content, cover.
+
+Sends POST request to backend.
+
+Redirects to homepage on success.
+
+### 📄 Post Details Page (/posts/:id)
+
+Displays post title, author, content, cover image, and date.
+
+Buttons:
+
+Update → Navigates to /update/:id
+
+Delete → Sends DELETE request, then navigates home.
+
+### ✏️ Post Update Page (/update/:id)
+
+Pre-filled form with existing post data.
+
+Sends PUT request to backend.
+
+Redirects to post details on success.
